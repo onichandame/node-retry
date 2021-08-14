@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: yarn && yarn build
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false # allow the creation of yarn.lock
       - name: Publish
         uses: onichandame/github-action-npm-publish@v0.1.6
         env:
