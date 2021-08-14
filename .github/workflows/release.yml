@@ -26,7 +26,7 @@ jobs:
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false # allow the creation of yarn.lock
       - name: Publish
-        uses: onichandame/github-action-npm-publish@v0.1.6
+        uses: onichandame/github-action-npm-publish@v0.1.7
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
