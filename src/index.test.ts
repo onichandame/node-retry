@@ -1,12 +1,11 @@
 import retry from "./index";
-import assert from "assert";
 
 describe(__filename, () => {
   it(`can run successfully with defaults`, async () => {
     const f = () => 1;
-    assert((await retry(f)) === 1);
+    expect(await retry(f)).toEqual(1);
     const af = async () => 1;
-    assert((await retry(af)) === 1);
+    expect(await retry(af)).toEqual(1);
   });
 
   it(`can throw the error thrown`, async () => {
@@ -14,7 +13,7 @@ describe(__filename, () => {
     const f = () => {
       throw e;
     };
-    await assert.rejects(retry(f), e);
+    expect(retry(f)).rejects.toBe(e);
   });
 
   it(`can retry n times`, async () => {
@@ -26,6 +25,6 @@ describe(__filename, () => {
       return 1;
     };
     await retry(f, { attempts });
-    assert(trials === attempts);
+    expect(trials).toEqual(attempts);
   });
 });
