@@ -1,7 +1,7 @@
 {
   "name": "@onichandame/retry",
   "type": "module",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "modern retry with simplicity",
   "main": "dist/index",
   "scripts": {
