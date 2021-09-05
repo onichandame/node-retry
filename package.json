@@ -1,7 +1,6 @@
 {
   "name": "@onichandame/retry",
-  "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "modern retry with simplicity",
   "main": "dist/cjs/index",
   "module": "dist/esm/index.js",
@@ -9,7 +8,8 @@
     "test": "jest",
     "build:cjs": "tsc -p ./tsconfig.build-cjs.json",
     "build:esm": "tsc -p ./tsconfig.build-esm.json",
-    "build": "concurrently 'yarn build:cjs' 'yarn build:esm'"
+    "build": "concurrently 'yarn build:cjs' 'yarn build:esm'",
+    "postinstall": "npm run build"
   },
   "jest": {
     "preset": "ts-jest/presets/default-esm",
