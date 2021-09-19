@@ -27,4 +27,27 @@ describe(__filename, () => {
     await retry(f, { attempts });
     expect(trials).toEqual(attempts);
   });
+
+  it(`can retry n times with specified interval`, async () => {
+    const attempts = 5;
+    const interval = 200;
+    let trials = 0;
+    const trialTimestamp: Date[] = [];
+    const f = async () => {
+      trials++;
+      trialTimestamp.push(new Date());
+      if (trials < attempts) throw new Error();
+      return 1;
+    };
+    await retry(f, { attempts, interval });
+    expect(
+      trialTimestamp.reduce(
+        (prev, curr, ind, arr) =>
+          prev &&
+          (ind === 0 ||
+            Math.abs(curr.getTime() - arr[ind - 1].getTime() - interval) < 100),
+        true
+      )
+    ).toBeTruthy();
+  });
 });
